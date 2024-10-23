@@ -1,0 +1,158 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+local status = false
+local minim = false
+local ts = game:GetService("TweenService")
+local tinfo = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
+local target1 = {Size = UDim2.new(0, 274, 0, 246)}
+local target2 = {Size = UDim2.new(0, 274, 0, 42)}
+local lp = game.Players.LocalPlayer
+local char = lp.Character
+local yaaeyy = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local tw1 = ts:Create(Frame, tinfo, target1)
+local tw2 = ts:Create(Frame, tinfo, target2)
+local UICorner = Instance.new("UICorner")
+local toggle = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local UICorner_3 = Instance.new("UICorner")
+local afk = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
+local min = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local drag = false
+local mouse = lp:GetMouse()
+
+--Properties:
+
+yaaeyy.Name = "yaaeyy"
+yaaeyy.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = yaaeyy
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BackgroundTransparency = 0.500
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.368015409, 0, 0.408099681, 0)
+Frame.Size = UDim2.new(0, 274, 0, 246)
+
+UICorner.Parent = Frame
+
+toggle.Name = "toggle"
+toggle.Parent = Frame
+toggle.BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+toggle.BorderSizePixel = 0
+toggle.Position = UDim2.new(0.135036498, 0, 0.273921192, 0)
+toggle.Size = UDim2.new(0, 200, 0, 50)
+toggle.Font = Enum.Font.Code
+toggle.Text = "toggle farming (off)"
+toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggle.TextSize = 14.000
+
+UICorner_2.Parent = toggle
+
+UICorner_3.Parent = UICorner_2
+
+afk.Name = "afk"
+afk.Parent = Frame
+afk.BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+afk.BorderColor3 = Color3.fromRGB(0, 0, 0)
+afk.BorderSizePixel = 0
+afk.Position = UDim2.new(0.135036498, 0, 0.631644785, 0)
+afk.Size = UDim2.new(0, 200, 0, 50)
+afk.Font = Enum.Font.Code
+afk.Text = "antiafk"
+afk.TextColor3 = Color3.fromRGB(255, 255, 255)
+afk.TextSize = 14.000
+
+UICorner_4.Parent = afk
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(-0.113138683, 0, -0.0365853645, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.Code
+TextLabel.Text = "babft candy farm"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
+
+min.Name = "min"
+min.Parent = Frame
+min.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+min.BackgroundTransparency = 0.700
+min.BorderColor3 = Color3.fromRGB(0, 0, 0)
+min.BorderSizePixel = 0
+min.Position = UDim2.new(0.864963531, 0, 0.0121951215, 0)
+min.Size = UDim2.new(0, 31, 0, 25)
+min.Font = Enum.Font.SourceSans
+min.Text = "-"
+min.TextColor3 = Color3.fromRGB(255, 255, 255)
+min.TextScaled = true
+min.TextSize = 14.000
+min.TextWrapped = true
+
+UICorner_5.Parent = min
+
+toggle.MouseButton1Click:Connect(function()
+    local currpos = char.HumanoidRootPart.CFrame
+    local hb
+    if status == false then
+        toggle.Text = "toggle farming (on)"
+        status = true
+        while status == true do
+            if workspace.Houses:FindFirstChild("TrickOrTreatHouse") then
+                hb = workspace.Houses.TrickOrTreatHouse.Door.DoorInnerTouch
+                char.HumanoidRootPart.CFrame = hb.CFrame
+                wait(0.2)
+                char.HumanoidRootPart.CFrame = currpos
+                wait(10)
+            end
+        end
+    else
+        status = false
+        toggle.Text = "toggle farming (off)"
+        char.HumanoidRootPart.CFrame = currpos
+    end
+end)
+
+afk.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BaconBossScript/AntiAFK/refs/heads/main/AntiAFK'))()
+end)
+
+min.MouseButton1Click:Connect(function()
+    if minim == false then
+        minim = true
+        afk.Visible = false
+        toggle.Visible = false
+        tw2:Play()
+    else
+        minim = false
+        afk.Visible = true
+        toggle.Visible = true
+		tw1:Play()
+    end
+end)
+
+Frame.MouseEnter:Connect(function()
+	drag = true
+end)
+
+mouse.Button1Down:Connect(function()
+	if drag == true then
+		while drag == true do
+			Frame.Position = UDim2.new(0, mouse.X - 50, 0, mouse.Y)
+			wait(0.01)
+		end
+	end
+end)
+
+mouse.Button1Up:Connect(function()
+	drag = false
+end)
