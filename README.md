@@ -9,7 +9,7 @@
 
 ## Build a Boat for Treasure Candy Autofarm Script
 
-#### **Important!** __This script works very bad on **Solara**. After injecting, 1-3 mins later client just freezes. I don't know the exact reason of this.. um.. strange script behavior..(_
+#### **Important!** _This script works very bad on **Solara**. After injecting, 1-3 mins later client just freezes. I don't know the exact reason of this.. um.. strange script behavior..(_
 
 ###### _antiafk: BaconBossScript_
 
