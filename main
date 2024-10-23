@@ -65,7 +65,7 @@ afk.BorderSizePixel = 0
 afk.Position = UDim2.new(0.135036498, 0, 0.631644785, 0)
 afk.Size = UDim2.new(0, 200, 0, 50)
 afk.Font = Enum.Font.Code
-afk.Text = "antiafk"
+afk.Text = "antiafk (credits to BaconBossScript)"
 afk.TextColor3 = Color3.fromRGB(255, 255, 255)
 afk.TextSize = 14.000
 
@@ -123,7 +123,7 @@ toggle.MouseButton1Click:Connect(function()
 end)
 
 afk.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/BaconBossScript/AntiAFK/refs/heads/main/AntiAFK'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BaconBossScript/AntiAFK/refs/heads/main/AntiAFK'))() --credits to BaconBossScript
 end)
 
 min.MouseButton1Click:Connect(function()
