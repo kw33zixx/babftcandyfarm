@@ -13,4 +13,4 @@
 
 ###### _antiafk: BaconBossScript_
 
-###### _this script was made by ![@ex0rc1sta]('https://t.me/exorcista')
+###### _this script was made by ![@ex0rc1sta](https://t.me/ex0rc1sta)
