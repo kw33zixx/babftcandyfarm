@@ -23,8 +23,7 @@ local UICorner_4 = Instance.new("UICorner")
 local TextLabel = Instance.new("TextLabel")
 local min = Instance.new("TextButton")
 local UICorner_5 = Instance.new("UICorner")
-local drag = false
-local mouse = lp:GetMouse()
+local drag = Instance.new("UIDragDetector")
 
 --Properties:
 
@@ -38,6 +37,8 @@ Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
 Frame.Position = UDim2.new(0.368015409, 0, 0.408099681, 0)
 Frame.Size = UDim2.new(0, 274, 0, 246)
+
+drag.Parent = Frame
 
 UICorner.Parent = Frame
 
@@ -139,21 +140,4 @@ min.MouseButton1Click:Connect(function()
         toggle.Visible = true
 		tw1:Play()
     end
-end)
-
-Frame.MouseEnter:Connect(function()
-	drag = true
-end)
-
-mouse.Button1Down:Connect(function()
-	if drag == true then
-		while drag == true do
-			Frame.Position = UDim2.new(0, mouse.X - 50, 0, mouse.Y)
-			wait(0.01)
-		end
-	end
-end)
-
-mouse.Button1Up:Connect(function()
-	drag = false
 end)
